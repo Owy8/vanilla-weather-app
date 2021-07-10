@@ -11,6 +11,8 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather App</title>
   </head>
@@ -19,11 +21,11 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
-            <h1>New York</h1>
+            <h1 id="city"></h1>
 
             <ul>
-              <li>Friday 05:00</li>
-              <li>Cloudy</li>
+              <li id="date">Friday 05:00</li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -31,27 +33,24 @@
               <div class="cloudyfix weather-temperature">
                 <img src="" alt="cloudy" class="float-left" />
                 <div class="float-left">
-                  <strong>18</strong
-                  ><span class="units">°C | <a href="#">°F></a></span>
+                  <strong id="temperature"></strong
+                  ><span class="units">°C | <a href="#">°F</a></span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>Precipitation: 60%</li>
-                <li>Humidity: 80%</li>
-                <li>Wind: 14 KMPH</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span>km/h</li>
               </ul>
             </div>
-            <small>
-              <a
-                href="https://github.com/Owy8/vanilla-weather-app"
-                target="blank"
-                >Open-source code</a
-              >by Sylvie Fong</small
-            >
           </div>
         </div>
+        <small>
+          <a href="https://github.com/Owy8/vanilla-weather-app" target="blank"
+            >Open-source code</a
+          >by Sylvie Fong</small
+        >
       </div>
     </div>
     <script src="src/script.js"></script>
