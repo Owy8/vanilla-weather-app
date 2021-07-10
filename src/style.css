@@ -13,7 +13,6 @@ ul {
   padding: 0;
 }
 li {
-  text-transform: capitalize;
   list-style: none;
   color: rgb(135, 135, 135);
   font-size: 16px;
@@ -21,6 +20,9 @@ li {
   line-height: 19px;
   margin: 0;
   padding: 0;
+}
+li::first-letter {
+  text-transform: capitalize;
 }
 .weather-app-wrapper {
   max-width: 600px;
