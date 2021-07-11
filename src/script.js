@@ -48,8 +48,61 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
+
 let cityName = "Toronto";
 let apiKey = "146a2d6b6ac247d05289f4e367d16448";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
+
+function search(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#city");
+  let cityInput = document.querySelector("#input-city");
+  searchInput.innerHTML = cityInput.value;
+
+  let apiKey = "146a2d6b6ac247d05289f4e367d16448";
+  let city = cityInput.value;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "146a2d6b6ac247d05289f4e367d16448";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", search);
+form.addEventListener("click", search);
+
+// fahrenheit
+function convertFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let temperature = temperatureElement.innerHTML;
+  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+}
+let fahrenheit = document.querySelector("#temp-f");
+fahrenheit.addEventListener("click", convertFahrenheit);
+
+// celcius
+function convertCelcius(event) {
+  event.preventDefault();
+  let celciusElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = celciusElement.innerHTML;
+  celciusElement.innerHTML = Math.round((fahrenheitTemperature - 30) / 2);
+}
+let celcius = document.querySelector("#temp-c");
+celcius.addEventListener("click", convertCelcius);
+
+// current
+function searchNavigator() {
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+let currentPosition = document.querySelector("#current-button");
+currentPosition.addEventListener("click", searchNavigator);

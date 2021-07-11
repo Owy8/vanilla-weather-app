@@ -21,6 +21,16 @@
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
+            <form id="search-form">
+              <input type="text" id="input-city" placeholder="Enter a city" />
+              <button type="button" class="btn btn-light" id="search-button">
+                Search
+              </button>
+              <button type="button" class="btn btn-dark" id="current-button">
+                Current
+              </button>
+            </form>
+
             <h1 id="city"></h1>
 
             <ul>
@@ -34,7 +44,9 @@
                 <img src="" alt="" id="icon" class="float-left" />
                 <span class="float-left">
                   <strong id="temperature"></strong
-                  ><span class="units">°C | <a href="#">°F</a></span>
+                  ><span class="units"
+                    >°C | <a href="#" id="temp-f">°F</a></span
+                  >
                 </span>
               </div>
             </div>
