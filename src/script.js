@@ -56,6 +56,35 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appi
 
 axios.get(apiUrl).then(displayTemperature);
 
+//forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#daily-forecast");
+
+  let forecastHtml = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="col-2">
+      <div class="daily-date">${day}</div>
+      <img
+        src="https://openweathermap.org/img/wn/10d@2x.png"
+        alt="img"
+        width="42"
+      />
+      <div class="daily-forecast-temp">
+        <span class="daily-forecast-temp-max">18</span>
+        <span class="daily-forecast-temp-min">12</span>
+      </div>
+    </div>`;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+displayForecast();
+
 function search(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#city");
