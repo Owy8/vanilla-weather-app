@@ -48,6 +48,8 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 let cityName = "Toronto";
@@ -57,7 +59,12 @@ let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appi
 axios.get(apiUrl).then(displayTemperature);
 
 //forecast
-function displayForecast() {
+function getForecast(coordinates) {
+  let apiKey = "146a2d6b6ac247d05289f4e367d16448";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response) {
   let forecastElement = document.querySelector("#daily-forecast");
 
   let forecastHtml = `<div class="row">`;
@@ -83,7 +90,6 @@ function displayForecast() {
   forecastHtml = forecastHtml + `</div>`;
   forecastElement.innerHTML = forecastHtml;
 }
-displayForecast();
 
 function search(event) {
   event.preventDefault();
