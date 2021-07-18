@@ -138,17 +138,6 @@ function convertFahrenheit(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round((celciusTemp * 9) / 5 + 32);
 }
-let fahrenheit = document.querySelector("#temp-f");
-fahrenheit.addEventListener("click", convertFahrenheit);
-let celciusTemp = null;
-// celcius
-function convertCelcius(event) {
-  event.preventDefault();
-  let celciusElement = document.querySelector("#temperature");
-  celciusElement.innerHTML = Math.round(celciusTemp);
-}
-let celcius = document.querySelector("#temp-c");
-celcius.addEventListener("click", convertCelcius);
 
 // current
 function searchNavigator() {
